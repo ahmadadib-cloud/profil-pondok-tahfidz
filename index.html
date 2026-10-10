@@ -49,22 +49,134 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-600 selection:text-white">
 
+    <!-- Admin Toggle Floating Button -->
+    <button id="toggle-admin-btn" onclick="toggleAdminPanel()" class="fixed bottom-6 right-6 z-50 bg-slate-900 hover:bg-slate-800 text-amber-400 p-4 rounded-full shadow-2xl border-2 border-amber-400 flex items-center justify-center space-x-2 transition-all transform hover:scale-105 group">
+        <i class="fa-solid fa-user-gear text-xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold text-white pl-0 group-hover:pl-2">Panel Admin</span>
+    </button>
+
+    <!-- Admin Panel Overlay / Drawer Sidebar -->
+    <div id="admin-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity" onclick="toggleAdminPanel()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-xl bg-slate-900 text-white shadow-2xl flex flex-col border-l border-slate-800">
+                <!-- Admin Header -->
+                <div class="p-6 bg-slate-950 border-b border-slate-800 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-amber-500 text-slate-950 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white">Pusat Konfigurasi Admin</h2>
+                            <p class="text-xs text-amber-400">Atur & Perbarui Informasi Web Secara Real-Time</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleAdminPanel()" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Admin Tabs Nav -->
+                <div class="flex border-b border-slate-800 bg-slate-900 px-6 text-xs font-semibold overflow-x-auto">
+                    <button id="admin-tab-umum-btn" onclick="switchAdminTab('umum')" class="py-3 px-4 border-b-2 border-amber-400 text-amber-400 whitespace-nowrap">Identitas & PSB</button>
+                    <button id="admin-tab-kontak-btn" onclick="switchAdminTab('kontak')" class="py-3 px-4 border-b-2 border-transparent text-slate-400 hover:text-white whitespace-nowrap">Kontak & Medsos</button>
+                    <button id="admin-tab-pengasuh-btn" onclick="switchAdminTab('pengasuh')" class="py-3 px-4 border-b-2 border-transparent text-slate-400 hover:text-white whitespace-nowrap">Pengasuh & Kuota</button>
+                </div>
+
+                <!-- Admin Body / Form -->
+                <div class="p-6 overflow-y-auto flex-1 space-y-6 text-xs">
+                    <!-- Tab Umum -->
+                    <div id="admin-tab-umum" class="space-y-4">
+                        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider border-b border-slate-800 pb-2">Informasi Utama Sekolah</h3>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Nama Ma'had / Pesantren</label>
+                            <input type="text" id="cfg-school-name" value="MA'HAD AL-QURRO'" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Sub-Judul / Wilayah</label>
+                            <input type="text" id="cfg-school-sub" value="Melak Ulu • Kutai Barat" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Slogan / Tagline Utama</label>
+                            <input type="text" id="cfg-slogan" value="Pusat Tahfidz Qur'an & Morallitas Tinggi di Melak Ulu" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        
+                        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider border-b border-slate-800 pb-2 pt-4">Status Pendaftaran (PSB)</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-slate-300 font-semibold mb-1">Tahun Ajaran</label>
+                                <input type="text" id="cfg-academic-year" value="2026/2027" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label class="block text-slate-300 font-semibold mb-1">Status Pendaftaran</label>
+                                <select id="cfg-psb-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                                    <option value="PSB T.A. 2026/2027 DIBUKA">DIBUKA</option>
+                                    <option value="SEGERA DIBUKA">SEGERA DIBUKA</option>
+                                    <option value="PENDAFTARAN DITUTUP">DITUTUP</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Kontak -->
+                    <div id="admin-tab-kontak" class="space-y-4 hidden">
+                        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider border-b border-slate-800 pb-2">Kontak & Sekretariat</h3>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Nomor WhatsApp / Telepon Humas</label>
+                            <input type="text" id="cfg-phone" value="+62 812-3456-7890" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Email Resmi</label>
+                            <input type="email" id="cfg-email" value="info@alqurro-melak.sch.id" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Alamat Lengkap Ma'had</label>
+                            <textarea id="cfg-address" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">Jl. Poros Melak Ulu, Kec. Melak, Kabupaten Kutai Barat, Kalimantan Timur 75775</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tab Pengasuh & Extra -->
+                    <div id="admin-tab-pengasuh" class="space-y-4 hidden">
+                        <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider border-b border-slate-800 pb-2">Identitas Pimpinan Ma'had</h3>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Nama Pimpinan / Pengasuh</label>
+                            <input type="text" id="cfg-leader-name" value="Ustadz Ahmad Mudzakir, Lc., Al-Hafizh" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Latar Belakang / Sanad</label>
+                            <input type="text" id="cfg-leader-sanad" value="Pemegang Sanad Qira'at Ashim Riwayat Hafsh" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-400">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Footer Actions -->
+                <div class="p-6 bg-slate-950 border-t border-slate-800 flex items-center justify-between">
+                    <button onclick="resetAdminConfig()" class="text-xs text-slate-400 hover:text-rose-400 underline">Reset Default</button>
+                    <button onclick="saveAdminConfig()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-6 py-2.5 rounded-xl font-bold shadow-lg flex items-center space-x-2">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Simpan & Terapkan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Top Bar Info -->
     <div class="bg-emerald-950 text-emerald-100 text-xs sm:text-sm py-2 px-4 border-b border-emerald-800/50">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> Melak Ulu, Kutai Barat, Kaltim</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> +62 812-3456-7890</span>
+                <span><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> <span id="display-location">Melak Ulu, Kutai Barat, Kaltim</span></span>
+                <span class="hidden md:inline"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> <span id="display-top-phone">+62 812-3456-7890</span></span>
             </div>
             <div class="flex items-center space-x-3">
-                <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-xs border border-amber-500/30 font-semibold">PSB T.A. 2026/2027 DIBUKA</span>
+                <span id="display-psb-badge" class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-xs border border-amber-500/30 font-semibold">PSB T.A. 2026/2027 DIBUKA</span>
                 <a href="#psb" class="hover:text-amber-300 transition-colors font-medium underline">Daftar Sekarang</a>
             </div>
         </div>
     </div>
 
     <!-- Main Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <!-- Logo & Name -->
@@ -73,8 +185,8 @@
                         <i class="fa-solid fa-quran"></i>
                     </div>
                     <div>
-                        <span class="block text-xl font-extrabold text-emerald-950 tracking-tight leading-tight">MA'HAD AL-QURRO'</span>
-                        <span class="block text-xs font-semibold text-amber-600 tracking-wider uppercase">Melak Ulu • Kutai Barat</span>
+                        <span id="display-nav-name" class="block text-xl font-extrabold text-emerald-950 tracking-tight leading-tight">MA'HAD AL-QURRO'</span>
+                        <span id="display-nav-sub" class="block text-xs font-semibold text-amber-600 tracking-wider uppercase">Melak Ulu • Kutai Barat</span>
                     </div>
                 </div>
 
@@ -120,7 +232,7 @@
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                     <div class="inline-flex items-center space-x-2 bg-emerald-800/80 border border-emerald-700 text-amber-300 text-xs sm:text-sm px-4 py-1.5 rounded-full shadow-inner">
                         <i class="fa-solid fa-star text-amber-400"></i>
-                        <span>Pusat Cadet Qur'ani & Morallitas Tinggi di Melak Ulu</span>
+                        <span id="display-slogan">Pusat Tahfidz Qur'an & Morallitas Tinggi di Melak Ulu</span>
                     </div>
 
                     <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
@@ -241,13 +353,13 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
                         <div class="absolute bottom-4 left-6 right-6 text-white">
                             <span class="text-xs bg-amber-500 text-slate-950 font-bold px-2.5 py-0.5 rounded-full">Pimpinan Ma'had</span>
-                            <h3 class="text-xl font-bold mt-1">Ustadz Ahmad Mudzakir, Lc., Al-Hafizh</h3>
+                            <h3 id="display-leader-name" class="text-xl font-bold mt-1">Ustadz Ahmad Mudzakir, Lc., Al-Hafizh</h3>
                         </div>
                     </div>
                     <div class="p-6 space-y-4">
                         <div class="space-y-2 text-sm text-slate-600">
                             <p class="flex items-start"><i class="fa-solid fa-graduation-cap text-emerald-600 mt-1 mr-2.5"></i> <span>Alumni Universitas Islam Madinah / LIPIA</span></p>
-                            <p class="flex items-start"><i class="fa-solid fa-award text-amber-500 mt-1 mr-2.5"></i> <span>Pemegang Sanad Qira'at Ashim Riwayat Hafsh</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-award text-amber-500 mt-1 mr-2.5"></i> <span id="display-leader-sanad">Pemegang Sanad Qira'at Ashim Riwayat Hafsh</span></p>
                             <p class="flex items-start"><i class="fa-solid fa-clock text-emerald-600 mt-1 mr-2.5"></i> <span>Pengalaman Mengajar Tahfidz > 12 Tahun</span></p>
                         </div>
                         <p class="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-xl border border-slate-100">
@@ -641,15 +753,15 @@
                     <ul class="space-y-3 text-xs">
                         <li class="flex items-start">
                             <i class="fa-solid fa-location-dot text-amber-400 mt-0.5 mr-2.5"></i>
-                            <span>Jl. Poros Melak Ulu, Kec. Melak, Kabupaten Kutai Barat, Kalimantan Timur 75775</span>
+                            <span id="display-footer-address">Jl. Poros Melak Ulu, Kec. Melak, Kabupaten Kutai Barat, Kalimantan Timur 75775</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa-solid fa-phone text-amber-400 mr-2.5"></i>
-                            <span>+62 812-3456-7890 (Humas)</span>
+                            <span id="display-footer-phone">+62 812-3456-7890 (Humas)</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa-solid fa-envelope text-amber-400 mr-2.5"></i>
-                            <span>info@alqurro-melak.sch.id</span>
+                            <span id="display-footer-email">info@alqurro-melak.sch.id</span>
                         </li>
                     </ul>
                 </div>
@@ -681,7 +793,81 @@
     </footer>
 
     <script>
-        // Toggle Mobile Navigation
+        // Admin Panel Drawer Logic
+        function toggleAdminPanel() {
+            const drawer = document.getElementById('admin-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function switchAdminTab(tabName) {
+            ['umum', 'kontak', 'pengasuh'].forEach(t => {
+                const tabContent = document.getElementById(`admin-tab-${t}`);
+                const tabBtn = document.getElementById(`admin-tab-${t}-btn`);
+                if (t === tabName) {
+                    tabContent.classList.remove('hidden');
+                    tabBtn.classList.add('border-amber-400', 'text-amber-400');
+                    tabBtn.classList.remove('border-transparent', 'text-slate-400');
+                } else {
+                    tabContent.classList.add('hidden');
+                    tabBtn.classList.remove('border-amber-400', 'text-amber-400');
+                    tabBtn.classList.add('border-transparent', 'text-slate-400');
+                }
+            });
+        }
+
+        // Apply Configuration to Web Dynamic UI Elements
+        function saveAdminConfig() {
+            const schoolName = document.getElementById('cfg-school-name').value;
+            const schoolSub = document.getElementById('cfg-school-sub').value;
+            const slogan = document.getElementById('cfg-slogan').value;
+            const psbStatus = document.getElementById('cfg-psb-status').value;
+            const phone = document.getElementById('cfg-phone').value;
+            const email = document.getElementById('cfg-email').value;
+            const address = document.getElementById('cfg-address').value;
+            const leaderName = document.getElementById('cfg-leader-name').value;
+            const leaderSanad = document.getElementById('cfg-leader-sanad').value;
+
+            // Dynamic UI updates
+            document.getElementById('display-nav-name').innerText = schoolName;
+            document.getElementById('display-nav-sub').innerText = schoolSub;
+            document.getElementById('display-slogan').innerText = slogan;
+            document.getElementById('display-psb-badge').innerText = psbStatus;
+            document.getElementById('display-top-phone').innerText = phone;
+            document.getElementById('display-footer-phone').innerText = phone + ' (Humas)';
+            document.getElementById('display-footer-email').innerText = email;
+            document.getElementById('display-footer-address').innerText = address;
+            document.getElementById('display-leader-name').innerText = leaderName;
+            document.getElementById('display-leader-sanad').innerText = leaderSanad;
+
+            // Notification / Feedback
+            const btn = event.currentTarget;
+            const origText = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> Tersimpan!`;
+            btn.classList.replace('bg-amber-500', 'bg-emerald-500');
+            btn.classList.add('text-white');
+
+            setTimeout(() => {
+                btn.innerHTML = origText;
+                btn.classList.replace('bg-emerald-500', 'bg-amber-500');
+                btn.classList.remove('text-white');
+                toggleAdminPanel();
+            }, 1200);
+        }
+
+        function resetAdminConfig() {
+            document.getElementById('cfg-school-name').value = "MA'HAD AL-QURRO'";
+            document.getElementById('cfg-school-sub').value = "Melak Ulu • Kutai Barat";
+            document.getElementById('cfg-slogan').value = "Pusat Tahfidz Qur'an & Morallitas Tinggi di Melak Ulu";
+            document.getElementById('cfg-psb-status').value = "PSB T.A. 2026/2027 DIBUKA";
+            document.getElementById('cfg-phone').value = "+62 812-3456-7890";
+            document.getElementById('cfg-email').value = "info@alqurro-melak.sch.id";
+            document.getElementById('cfg-address').value = "Jl. Poros Melak Ulu, Kec. Melak, Kabupaten Kutai Barat, Kalimantan Timur 75775";
+            document.getElementById('cfg-leader-name').value = "Ustadz Ahmad Mudzakir, Lc., Al-Hafizh";
+            document.getElementById('cfg-leader-sanad').value = "Pemegang Sanad Qira'at Ashim Riwayat Hafsh";
+            saveAdminConfig();
+        }
+
+        // Mobile Navigation Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -699,13 +885,12 @@
         // Form Submit Simulation
         function handleFormSubmit(e) {
             e.preventDefault();
+            const phone = document.getElementById('cfg-phone').value.replace(/[^0-9]/g, '');
             const successMsg = document.getElementById('form-success');
             successMsg.classList.remove('hidden');
 
             setTimeout(() => {
-                alert("Mengarahkan Anda ke WhatsApp Panitia PSB Ma'had Al-Qurro' Melak Ulu...");
-                // Simulating redirection to WA
-                window.open('https://wa.me/6281234567890?text=Assalamu%27alaikum%20Panitia%20PSB%20Ma%27had%20Al-Qurro%27%20Melak%20Ulu,%20saya%20ingin%20berkonsultasi%20pendaftaran%20santri.', '_blank');
+                window.open(`https://wa.me/${phone}?text=Assalamu%27alaikum%20Panitia%20PSB%20Ma%27had%20Al-Qurro%27%20Melak%20Ulu,%20saya%20ingin%20berkonsultasi%20pendaftaran%20santri.`, '_blank');
             }, 1000);
         }
     </script>
