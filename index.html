@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma'had Al-Qurro' Melak Ulu - Pesantren Tahfidzul Qur'an & Ilmu Syar'i</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Amiriri (Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#055139',
+                            950: '#022c1e',
+                        },
+                        amber: {
+                            450: '#f5a623',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .arabic-text {
+            font-family: 'Amiri', serif;
+        }
+        .pattern-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#047857 0.75px, transparent 0.75px), radial-gradient(#047857 0.75px, #f8fafc 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+            background-opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-600 selection:text-white">
+
+    <!-- Top Bar Info -->
+    <div class="bg-emerald-950 text-emerald-100 text-xs sm:text-sm py-2 px-4 border-b border-emerald-800/50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> Melak Ulu, Kutai Barat, Kaltim</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> +62 812-3456-7890</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-xs border border-amber-500/30 font-semibold">PSB T.A. 2026/2027 DIBUKA</span>
+                <a href="#psb" class="hover:text-amber-300 transition-colors font-medium underline">Daftar Sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <!-- Logo & Name -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-emerald-700 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-md shadow-emerald-700/20 border-2 border-amber-400">
+                        <i class="fa-solid fa-quran"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-extrabold text-emerald-950 tracking-tight leading-tight">MA'HAD AL-QURRO'</span>
+                        <span class="block text-xs font-semibold text-amber-600 tracking-wider uppercase">Melak Ulu • Kutai Barat</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu Nav -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                    <a href="#home" class="hover:text-emerald-700 transition-colors py-2 border-b-2 border-transparent hover:border-emerald-600">Beranda</a>
+                    <a href="#tentang" class="hover:text-emerald-700 transition-colors py-2 border-b-2 border-transparent hover:border-emerald-600">Profil & Visi</a>
+                    <a href="#pengasuh" class="hover:text-emerald-700 transition-colors py-2 border-b-2 border-transparent hover:border-emerald-600">Pengasuh</a>
+                    <a href="#program" class="hover:text-emerald-700 transition-colors py-2 border-b-2 border-transparent hover:border-emerald-600">Program Unggulan</a>
+                    <a href="#galeri" class="hover:text-emerald-700 transition-colors py-2 border-b-2 border-transparent hover:border-emerald-600">Dokumentasi</a>
+                    <a href="#psb" class="bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">PSB Online</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Beranda</a>
+            <a href="#tentang" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Profil & Visi</a>
+            <a href="#pengasuh" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Pengasuh & Asatidzah</a>
+            <a href="#program" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Program Unggulan</a>
+            <a href="#galeri" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Dokumentasi Kegiatan</a>
+            <a href="#psb" class="block text-center bg-emerald-700 text-white py-3 rounded-xl font-semibold shadow-md">Pendaftaran Santri Baru</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-emerald-900 text-white overflow-hidden py-16 lg:py-24">
+        <!-- Background Decorative Elements -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-800/80 border border-emerald-700 text-amber-300 text-xs sm:text-sm px-4 py-1.5 rounded-full shadow-inner">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>Pusat Cadet Qur'ani & Morallitas Tinggi di Melak Ulu</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                        Mencetak Generasi <span class="text-amber-400 underline decoration-emerald-500 decoration-wavy">Hafizh Al-Qur'an</span> Berakhlaq Mulia & Beradab
+                    </h1>
+
+                    <p class="arabic-text text-2xl sm:text-3xl text-emerald-200 py-2">
+                        خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
+                    </p>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Ma'had Al-Qurro' Melak Ulu berkomitmen menghadirkan pendidikan Tahfidzul Qur'an bersanad, dipadu dengan pembinaan karakter keislaman yang kokoh, mandiri, dan berwawasan luas.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#psb" class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-500/25 transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Daftar Santri Baru
+                        </a>
+                        <a href="#tentang" class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-sm border border-white/20 transition-all">
+                            <i class="fa-solid fa-circle-play mr-2"></i> Pelajari Profil Kami
+                        </a>
+                    </div>
+
+                    <div class="pt-8 border-t border-emerald-800/60 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400">30 Juz</span>
+                            <span class="text-xs text-slate-300">Target Hafalan</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400">100%</span>
+                            <span class="text-xs text-slate-300">Bimbingan Tajwid</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-amber-400">Sanad</span>
+                            <span class="text-xs text-slate-300">Pengasuh Teruji</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-400/30 bg-emerald-950">
+                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80" alt="Halaqah Quran Ma'had Al Qurro" class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x600/047857/ffffff?text=Halaqah+Al-Qur\'an'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                            <p class="font-bold text-amber-300 text-sm">Suasana Halaqah Subuh</p>
+                            <p class="text-xs text-slate-200">Santri khusyua' menambah ziadah dan muraja'ah di Masjid Al-Qurro' Melak Ulu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section class="py-20 bg-white pattern-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-bold text-sm tracking-wider uppercase bg-emerald-100 px-3 py-1 rounded-full">Mengapa Memilih Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Keunggulan Ma'had Al-Qurro'</h2>
+                <p class="text-slate-600 mt-3">Kami mengombinasikan metode pembelajaran Qur'an yang teruji dengan lingkungan pengasuhan santri yang Islami dan nyaman di Melak Ulu.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Sanad Muttashil</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Bimbingan tahfidz langsung di bawah asuhan pengasuh bersanad muttashil sampai ke Rasulullah ﷺ.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-book-quran"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Metode Mutqan</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Fokus pada kualitas hafalan yang mutqan (kuat) melalui sistem Muraja'ah berlapis & ujian berkala.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pengasuhan 24 Jam</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Pengawasan ketat dan bimbingan adab harian oleh para asatidzah yang menetap di dalam asrama ma'had.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-tree-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Lingkungan Asri</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Lokasi strategis dan tenang di Melak Ulu, mendukung kekhusyukan santri dalam menghafal Al-Qur'an.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengasuh Section -->
+    <section id="pengasuh" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-bold text-sm tracking-wider uppercase bg-emerald-200/60 px-3 py-1 rounded-full">Kualifikasi Pengajar</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Dewan Pengasuh & Asatidzah</h2>
+                <p class="text-slate-600 mt-3">Dibina oleh ustadz-ustadz kompeten, alumni pesantren ternama & pemegang Sanad Al-Qur'an.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pengasuh 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 group">
+                    <div class="relative h-72 bg-emerald-900 overflow-hidden">
+                        <img src="https://cdn.jsdelivr.net/gh/ahmadadib-cloud/Kumpulan-gambar@main/IMG-20261009-WA0001.jpg" alt="Mudzakir Lc" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x700/022c1e/ffffff?text=Ustadz+Pimpinan'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 right-6 text-white">
+                            <span class="text-xs bg-amber-500 text-slate-950 font-bold px-2.5 py-0.5 rounded-full">Pimpinan Ma'had</span>
+                            <h3 class="text-xl font-bold mt-1">Ustadz Ahmad Mudzakir, Lc., Al-Hafizh</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-2 text-sm text-slate-600">
+                            <p class="flex items-start"><i class="fa-solid fa-graduation-cap text-emerald-600 mt-1 mr-2.5"></i> <span>Alumni Universitas Islam Madinah / LIPIA</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-award text-amber-500 mt-1 mr-2.5"></i> <span>Pemegang Sanad Qira'at Ashim Riwayat Hafsh</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-clock text-emerald-600 mt-1 mr-2.5"></i> <span>Pengalaman Mengajar Tahfidz > 12 Tahun</span></p>
+                        </div>
+                        <p class="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            "Misi utama kami adalah menjaga keotentikan bacaan Al-Qur'an dan menanamkannya dalam adab kehidupan sehari-hari santri."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pengasuh 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 group">
+                    <div class="relative h-72 bg-emerald-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Ustadz Abdullah" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x700/022c1e/ffffff?text=Ustadz+Tahfidz'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 right-6 text-white">
+                            <span class="text-xs bg-emerald-500 text-white font-bold px-2.5 py-0.5 rounded-full">Kepala Musrif Tahfidz</span>
+                            <h3 class="text-xl font-bold mt-1">Ustadz Muhammad Ridwan, S.Ag., Al-Hafizh</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-2 text-sm text-slate-600">
+                            <p class="flex items-start"><i class="fa-solid fa-graduation-cap text-emerald-600 mt-1 mr-2.5"></i> <span>STIQ Isy Karima Surakarta</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-award text-amber-500 mt-1 mr-2.5"></i> <span>Spesialis Tajwid & Matan Al-Jazariyyah</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-users text-emerald-600 mt-1 mr-2.5"></i> <span>Membina > 150 Santri Penghafal</span></p>
+                        </div>
+                        <p class="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            "Menghafal Al-Qur'an itu mudah, yang membutuhkan keistiqamahan adalah muraja'ah dan menjaga kehormatannya."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pengasuh 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 group">
+                    <div class="relative h-72 bg-emerald-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Ustadz Zulkifli" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x700/022c1e/ffffff?text=Ustadz+Bahasa'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 right-6 text-white">
+                            <span class="text-xs bg-emerald-500 text-white font-bold px-2.5 py-0.5 rounded-full">Pengajar Bahasa Arab</span>
+                            <h3 class="text-xl font-bold mt-1">Ustadz Zulkifli Amran, S.H.I.</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-2 text-sm text-slate-600">
+                            <p class="flex items-start"><i class="fa-solid fa-graduation-cap text-emerald-600 mt-1 mr-2.5"></i> <span>Alumni Ma'had Abu Bakar As-Siddiq</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-language text-amber-500 mt-1 mr-2.5"></i> <span>Pakar Nahwu, Shorof & Muhadatsah</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-book-open text-emerald-600 mt-1 mr-2.5"></i> <span>Pengampu Kajian Kitab Kuning</span></p>
+                        </div>
+                        <p class="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            "Bahasa Arab adalah kunci utama memahami mukjizat makna Al-Qur'an secara mendalam."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Unggulan Section -->
+    <section id="program" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-bold text-sm tracking-wider uppercase bg-emerald-100 px-3 py-1 rounded-full">Kurikulum Terpadu</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Program Pendidikan & Kurikulum</h2>
+                <p class="text-slate-600 mt-3">Kurikulum dirancang seimbang antara hafalan Qur'an, pemahaman Dinul Islam, serta pengembangan karakter.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 relative flex flex-col justify-between hover:border-emerald-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-800 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            01
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Tahfidz Takhassus 30 Juz</h3>
+                        <p class="text-slate-600 text-sm mb-6">Program intensif hafalan 30 Juz Al-Qur'an dengan target pencapaian 2-3 tahun, dilengkapi bimbingan tajwid standar Matan Tuhfatul Athfal & Al-Jazariyyah.</p>
+                        <ul class="space-y-3 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Target Ziadah (Hafalan Baru) 1 Halaman/Hari</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Setoran Sabqi & Manzil Rutin</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Ujian Per-5 Juz Sekali Duduk</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Pengambilan Ijazah Sanad Hafalan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bg-emerald-900 text-white rounded-2xl p-8 border border-emerald-800 relative flex flex-col justify-between shadow-xl">
+                    <span class="absolute top-4 right-4 bg-amber-400 text-slate-950 font-bold text-xs px-3 py-1 rounded-full uppercase">Paling Diminati</span>
+                    <div>
+                        <div class="w-12 h-12 bg-amber-400 text-slate-950 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            02
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Tahfidz Plus Dirasah Islamiyah</h3>
+                        <p class="text-emerald-200 text-sm mb-6">Program kombinasi hafalan Al-Qur'an disertai pendalaman Bahasa Arab, Aqidah, Fiqih Ibadah, dan Hadits Arba'in An-Nawawiyah.</p>
+                        <ul class="space-y-3 text-sm text-emerald-100 font-medium">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-amber-400 mr-2.5"></i> Target Hafalan Minimal 15-20 Juz</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-amber-400 mr-2.5"></i> Bahasa Arab Harian (Aktif)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-amber-400 mr-2.5"></i> Kajian Kitab Adab Muta'allim</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-amber-400 mr-2.5"></i> Ekstrakurikuler Memanah & Bersihat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 relative flex flex-col justify-between hover:border-emerald-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-800 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            03
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Program Mutqin & Sanad</h3>
+                        <p class="text-slate-600 text-sm mb-6">Diperuntukkan bagi alumni / santri yang telah menyelesaikan hafalan 30 Juz untuk melancarkan (itqan) dan memantapkan bacaan berstandar Sanad.</p>
+                        <ul class="space-y-3 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Ujian Tasmi' 30 Juz Sekali Duduk</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Setoran Matan Al-Jazariyyah</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Pelatihan Metode Mengajar Qur'an</li>
+                            <li class="flex items-center"><i class="fa-solid fa-circle-check text-emerald-600 mr-2.5"></i> Pengabdian & Pengajaran Santri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri & Kegiatan Section -->
+    <section id="galeri" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-amber-400 font-bold text-sm tracking-wider uppercase bg-amber-400/10 border border-amber-400/20 px-3 py-1 rounded-full">Aktivitas Santri</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Dokumentasi & Kegiatan Ma'had</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+                    Gambaran dinamika kehidupan santri di Ma'had Al-Qurro' Melak Ulu dalam belajar, beribadah, dan beraktivitas harian.
+                </p>
+            </div>
+
+            <!-- Galeri Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Foto 1 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1584282483985-72370c9d7240?auto=format&fit=crop&w=600&q=80" alt="Setoran Hafalan Santri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Setoran+Hafalan'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-emerald-600 text-white font-semibold px-2 py-0.5 rounded">Halaqah Subuh</span>
+                        <p class="font-bold text-white text-base mt-1">Setoran Hafalan kepada Musrif</p>
+                    </div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=600&q=80" alt="Kajian Kitab Bahasa Arab" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Kajian+Kitab'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-amber-500 text-slate-950 font-semibold px-2 py-0.5 rounded">Pembelajaran Kelas</span>
+                        <p class="font-bold text-white text-base mt-1">Kajian Kitab & Tajwid Dasar</p>
+                    </div>
+                </div>
+
+                <!-- Foto 3 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Wisuda Tahfidz Qur'an" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Wisuda+Tahfidz'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-emerald-600 text-white font-semibold px-2 py-0.5 rounded">Munaqasyah</span>
+                        <p class="font-bold text-white text-base mt-1">Wisuda Khotmil Qur'an Santri</p>
+                    </div>
+                </div>
+
+                <!-- Foto 4 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=600&q=80" alt="Masjid Ma'had Melak Ulu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Masjid+Mahad'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-amber-500 text-slate-950 font-semibold px-2 py-0.5 rounded">Fasilitas</span>
+                        <p class="font-bold text-white text-base mt-1">Masjid Utama Al-Qurro' Melak Ulu</p>
+                    </div>
+                </div>
+
+                <!-- Foto 5 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80" alt="Olahraga Memanah Santri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Eskul+Sunnah'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-emerald-600 text-white font-semibold px-2 py-0.5 rounded">Ekstrakurikuler</span>
+                        <p class="font-bold text-white text-base mt-1">Latihan Memanah Sunnah</p>
+                    </div>
+                </div>
+
+                <!-- Foto 6 -->
+                <div class="relative group rounded-2xl overflow-hidden bg-slate-800 aspect-video">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Makan Bersama Adab Islami" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=Makan+Bersama'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <span class="text-xs bg-amber-500 text-slate-950 font-semibold px-2 py-0.5 rounded">Kebersamaan</span>
+                        <p class="font-bold text-white text-base mt-1">Makan Nampan Bersama Menjaga Ukhuwah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Section -->
+    <section class="py-20 bg-emerald-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-800 font-bold text-sm tracking-wider uppercase bg-emerald-200/80 px-3 py-1 rounded-full">Kata Mereka</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Testimoni Wali Santri</h2>
+                <p class="text-slate-600 mt-3">Pengalaman orang tua yang mempercayakan putra-putrinya menuntut ilmu di Melak Ulu.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimoni 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+                            "alhamdulillah, anak saya disini gak bisa apa-apa, tidur mulu kerjaannya."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 bg-emerald-700 text-white rounded-full flex items-center justify-center font-bold">
+                            HB
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">H. Hendra Wijaya</h4>
+                            <span class="text-xs text-slate-500">Wali Santri asal Sendawar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+                            "Selain hafalan Qur'an, hal yang paling membuat kami bersyukur adalah perbaikan adab dan kemandirian anak. Mendoakan orang tua selalu jadi kebiasaannya."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 bg-amber-500 text-slate-950 font-bold rounded-full flex items-center justify-center">
+                            SR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Hj. Siti Rahmah</h4>
+                            <span class="text-xs text-slate-500">Wali Santri asal Barong Tongkok</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-6 italic">
+                            "Ustadz-ustadznya ramah, telaten, dan sangat perhatian dengan kondisi santri. Kami merasa tenang mempercayakan pendidikan anak di sini."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-100">
+                        <div class="w-10 h-10 bg-emerald-700 text-white rounded-full flex items-center justify-center font-bold">
+                            AR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Dr. Ahmad Rifai</h4>
+                            <span class="text-xs text-slate-500">Wali Santri asal Melak Ulu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PSB / Pendaftaran Section -->
+    <section id="psb" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-emerald-900 to-emerald-800 rounded-3xl text-white p-8 lg:p-14 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-400/10 rounded-full blur-2xl"></div>
+
+                <div class="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                            Pendaftaran Santri Baru (PSB)
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                            Bergabunglah Menjadi Bagian Dari Keluarga Ahlul Qur'an
+                        </h2>
+                        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                            Pendaftaran Gelombang 1 Tahun Ajaran 2026/2027 telah dibuka untuk jenjang SMP & SMA Tahfidz (Putra & Putri). Kuota terbatas untuk menjaga kualitas bimbingan.
+                        </p>
+
+                        <!-- Syarat Ringkas -->
+                        <div class="space-y-3 bg-emerald-950/60 p-6 rounded-2xl border border-emerald-700/50">
+                            <h4 class="font-bold text-amber-300 text-sm">Persyaratan Umum Pendaftaran:</h4>
+                            <ul class="text-xs sm:text-sm text-slate-200 space-y-2">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Mengisi formulir pendaftaran online/offline</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Fotokopi Akta Kelahiran & Kartu Keluarga (3 lembar)</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Pasfoto terbaru 3x4 (4 lembar background merah)</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Mengikuti tes wawancara santri & wali santri</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Form Pendaftaran / Konsultasi Quick -->
+                    <div class="lg:col-span-6 bg-white text-slate-900 p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-xl font-bold text-emerald-950 mb-2">Formulir Peminatan / Konsultasi</h3>
+                        <p class="text-xs text-slate-500 mb-6">Isi formulir berikut, panitia PSB Ma'had Al-Qurro' Melak Ulu akan menghubungi Anda via WhatsApp.</p>
+
+                        <form id="psb-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Calon Santri</label>
+                                <input type="text" required placeholder="Contoh: Muhammad Ammar" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 text-sm">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Jenis Kelamin</label>
+                                    <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 text-sm">
+                                        <option>Laki-laki</option>
+                                        <option>Perempuan</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">Jenjang</label>
+                                    <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 text-sm">
+                                        <option>SMP Tahfidz</option>
+                                        <option>SMA Tahfidz</option>
+                                        <option>Takhassus (30 Juz)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">No. WhatsApp Orang Tua / Wali</label>
+                                <input type="tel" required placeholder="0812xxxxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Kota / Alamat Asal</label>
+                                <input type="text" placeholder="Melak / Kutai Barat / Lainnya" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 text-sm">
+                            </div>
+                            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 rounded-xl transition-colors shadow-md text-sm">
+                                <i class="fa-brands fa-whatsapp mr-2 text-base"></i> Kirim Pendaftaran via WhatsApp
+                            </button>
+                        </form>
+                        <div id="form-success" class="hidden mt-4 p-4 bg-emerald-100 text-emerald-800 rounded-xl text-center text-xs font-bold">
+                            Terima kasih! Informasi Anda berhasil disiapkan. Mengarahkan ke Panitia...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Info Ma'had -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center text-white text-xl font-bold border border-amber-400">
+                            <i class="fa-solid fa-quran"></i>
+                        </div>
+                        <span class="text-lg font-bold text-white tracking-tight">MA'HAD AL-QURRO'</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Lembaga Pendidikan Tahfidzul Qur'an & Ilmu Syar'i terpercaya di Melak Ulu, Kabupaten Kutai Barat, Kalimantan Timur.
+                    </p>
+                    <div class="flex space-x-3 text-emerald-400">
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-emerald-700 hover:text-white transition-colors"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-emerald-700 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-emerald-700 hover:text-white transition-colors"><i class="fa-brands fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-emerald-700 hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigasi Cepat -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-l-2 border-amber-400 pl-2">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-amber-400 transition-colors">Beranda Utama</a></li>
+                        <li><a href="#tentang" class="hover:text-amber-400 transition-colors">Profil & Visi Misi</a></li>
+                        <li><a href="#pengasuh" class="hover:text-amber-400 transition-colors">Dewan Pengasuh</a></li>
+                        <li><a href="#program" class="hover:text-amber-400 transition-colors">Program Tahfidz</a></li>
+                        <li><a href="#psb" class="hover:text-amber-400 transition-colors">Informasi PSB</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontak -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-l-2 border-amber-400 pl-2">Kontak Sekretariat</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot text-amber-400 mt-0.5 mr-2.5"></i>
+                            <span>Jl. Poros Melak Ulu, Kec. Melak, Kabupaten Kutai Barat, Kalimantan Timur 75775</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone text-amber-400 mr-2.5"></i>
+                            <span>+62 812-3456-7890 (Humas)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope text-amber-400 mr-2.5"></i>
+                            <span>info@alqurro-melak.sch.id</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Jam Layanan -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-l-2 border-amber-400 pl-2">Jam Layanan Kantor</h4>
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
+                        <div class="flex justify-between">
+                            <span>Senin - Kamis:</span>
+                            <span class="text-amber-400 font-semibold">08.00 - 16.00 WITA</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Jum'at:</span>
+                            <span class="text-amber-400 font-semibold">08.00 - 11.30 WITA</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sabtu - Minggu:</span>
+                            <span class="text-amber-400 font-semibold">09.00 - 14.00 WITA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Ma'had Al-Qurro' Melak Ulu. All Rights Reserved. Menjaga Muraja'ah & Ahlul Qur'an.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form Submit Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('form-success');
+            successMsg.classList.remove('hidden');
+
+            setTimeout(() => {
+                alert("Mengarahkan Anda ke WhatsApp Panitia PSB Ma'had Al-Qurro' Melak Ulu...");
+                // Simulating redirection to WA
+                window.open('https://wa.me/6281234567890?text=Assalamu%27alaikum%20Panitia%20PSB%20Ma%27had%20Al-Qurro%27%20Melak%20Ulu,%20saya%20ingin%20berkonsultasi%20pendaftaran%20santri.', '_blank');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
